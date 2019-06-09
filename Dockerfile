@@ -1,6 +1,9 @@
-FROM ruby:2.4.0-alpine
+FROM ruby:2.6-alpine
 
-RUN apk update && apk upgrade
+RUN apk update && \
+    apk upgrade && \
+    apk add --virtual build-dependencies && \
+    apk add build-base
 
 WORKDIR /app
 COPY Gemfile .
